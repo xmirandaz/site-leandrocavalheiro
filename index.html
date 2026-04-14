@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leandro Cavalheiro - V6</title>
+    <title>Pr. Leandro Cavalheiro</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -15,9 +16,12 @@
             --text-dark: #333333;
             --text-light: #666666;
             --whatsapp-green: #25D366;
-            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --maps-blue: #0095f6;
+            /* Gradiente Instagram Story mais fiel ao exemplo */
+            --insta-gradient: linear-gradient(45deg, #f99b4a 0%, #dd2a7b 50%, #8122b0 100%);
         }
 
+        /* Montserrat aplicada globalmente */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
@@ -31,6 +35,7 @@
         .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+        /* Botão CTA Principal */
         .btn-cta {
             display: inline-block;
             background-color: var(--accent-color);
@@ -48,27 +53,28 @@
         }
         .btn-cta:hover { transform: scale(1.03); }
 
+        /* Botão Google Maps Personalizado */
         .btn-maps {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffffff;
-            color: var(--accent-color) !important;
+            background-color: var(--maps-blue);
+            color: #ffffff !important;
             padding: 14px 25px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(183, 124, 90, 0.2);
+            border: none;
             margin-top: 25px;
-            font-size: 14px; /* Tamanho padrão igual aos outros botões */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            max-width: 100%;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-transform: uppercase;
         }
-        .btn-maps i { margin-right: 12px; font-size: 20px; color: #EA4335; } /* Cor do Pin do Maps */
-        .btn-maps:hover { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        .btn-maps img { width: 24px; height: 24px; margin-right: 12px; }
+        .btn-maps:hover { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0,149,246,0.3); }
 
+        /* Alternância de Cores de Fundo */
         .hero { background: #ffffff; padding: 30px 0; text-align: center; }
         .about-section { background: var(--bg-alt); padding: 40px 0; }
         .services-section { background: #ffffff; padding: 40px 0; }
@@ -76,6 +82,7 @@
         .faq-section { background: #ffffff; padding: 40px 0; }
         footer { background: var(--bg-alt); padding: 40px 0 20px 0; text-align: center; border-top: 1px solid #eee; }
 
+        /* Molduras Estilo Instagram */
         .hero-photo-main {
             width: 320px; height: 320px; border-radius: 50%;
             margin: 0 auto 20px auto; position: relative; padding: 6px;
@@ -91,54 +98,42 @@
         .social-link i { color: var(--accent-color); font-size: 40px; transition: transform 0.3s, opacity 0.3s; }
         .social-link:hover i { opacity: 0.7; transform: translateY(-3px); }
 
-        .carousel-about {
-            width: 100%;
-            overflow: hidden;
-            padding: 20px 0 40px 0;
-            position: relative;
-            pointer-events: none;
-            user-select: none;
-        }
-        .carousel-track {
-            display: flex;
-            width: calc(250px * 20); 
-            animation: scroll-left 40s linear infinite;
-        }
-        .carousel-track img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin: 0 10px;
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        /* Carrossel */
+        .carousel-about { width: 100%; overflow: hidden; padding: 20px 0 40px 0; position: relative; pointer-events: none; }
+        .carousel-track { display: flex; width: calc(250px * 20); animation: scroll-left 40s linear infinite; }
+        .carousel-track img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; margin: 0 10px; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
         @keyframes scroll-left {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-250px * 10 - 200px)); }
         }
-        
-        .about-content { text-align: center; max-width: 800px; margin: 0 auto; }
 
+        .about-content { text-align: center; max-width: 800px; margin: 0 auto; }
+        
+        /* Serviços */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; margin-top: 80px; }
         .service-card { background: white; padding: 65px 25px 35px 25px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); position: relative; text-align: center; }
         .service-photo-box { width: 130px; height: 130px; position: absolute; top: -65px; left: 50%; transform: translateX(-50%); border-radius: 50%; padding: 4px; background: var(--insta-gradient); display: flex; align-items: center; justify-content: center; }
         .service-img-placeholder { width: 100%; height: 100%; background: white; border-radius: 50%; overflow: hidden; border: 3px solid white; }
         .service-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Reels */
         .reels-container { width: 100%; max-width: 350px; aspect-ratio: 9 / 16; background-color: #eee; margin: 20px auto; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; overflow: hidden; }
         .reels-container iframe { width: 100%; height: 100%; border: none; }
         .location-info { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; color: var(--text-dark); margin-top: 10px; }
         .location-info i { color: var(--accent-color); font-size: 20px; }
 
+        /* FAQ */
         .faq-item { border-bottom: 1px solid #eee; margin-bottom: 10px; background: white; border-radius: 8px; }
         .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s; padding: 0 20px; color: var(--text-light); }
         .faq-answer p { padding-bottom: 15px; }
 
+        /* Footer */
         .footer-logo img { max-width: 400px; height: auto; margin-bottom: 20px; }
         .footer-copy { margin-top: 30px; font-size: 13px; color: var(--text-light); }
 
+        /* Botão Flutuante WA */
         .floating-wa {
             position: fixed; bottom: 20px; right: 20px;
             background-color: var(--whatsapp-green);
@@ -156,19 +151,15 @@
         .formations-list li { margin-bottom: 8px; position: relative; padding-left: 20px; font-size: 15px; color: var(--text-light); }
         .formations-list li::before { content: "•"; color: var(--accent-color); font-weight: bold; position: absolute; left: 0; }
 
+        /* AJUSTES MOBILE */
         @media (max-width: 768px) {
             .logo-area img { max-width: 280px; }
             .hero-photo-main { width: 250px; height: 250px; }
             .services-grid { gap: 60px; }
-            .footer-logo img { max-width: 250px; }
-            .floating-wa { width: 55px; height: 55px; font-size: 25px; right: 15px; bottom: 15px; }
+            .footer-logo img { max-width: 220px; } /* Logo do rodapé reduzida conforme solicitado */
+            .floating-wa { width: 55px; height: 55px; font-size: 25px; right: 15px; bottom: 15px; } 
             h3 { font-size: 20px; }
             .carousel-track img { width: 180px; height: 180px; }
-            @keyframes scroll-left {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-180px * 10 - 200px)); }
-            }
-            .btn-maps { font-size: 12px; padding: 12px 15px; }
         }
     </style>
 </head>
@@ -197,25 +188,13 @@
     <section class="about-section" id="about">
         <div class="carousel-about">
             <div class="carousel-track">
-                <img src="assets/1.webp" alt="Foto 1">
-                <img src="assets/2.webp" alt="Foto 2">
-                <img src="assets/3.webp" alt="Foto 3">
-                <img src="assets/4.webp" alt="Foto 4">
-                <img src="assets/5.webp" alt="Foto 5">
-                <img src="assets/6.webp" alt="Foto 6">
-                <img src="assets/7.webp" alt="Foto 7">
-                <img src="assets/8.webp" alt="Foto 8">
-                <img src="assets/9.webp" alt="Foto 9">
+                <img src="assets/1.webp" alt="Foto 1"><img src="assets/2.webp" alt="Foto 2"><img src="assets/3.webp" alt="Foto 3">
+                <img src="assets/4.webp" alt="Foto 4"><img src="assets/5.webp" alt="Foto 5"><img src="assets/6.webp" alt="Foto 6">
+                <img src="assets/7.webp" alt="Foto 7"><img src="assets/8.webp" alt="Foto 8"><img src="assets/9.webp" alt="Foto 9">
                 <img src="assets/10.webp" alt="Foto 10">
-                <img src="assets/1.webp" alt="Foto 1">
-                <img src="assets/2.webp" alt="Foto 2">
-                <img src="assets/3.webp" alt="Foto 3">
-                <img src="assets/4.webp" alt="Foto 4">
-                <img src="assets/5.webp" alt="Foto 5">
-                <img src="assets/6.webp" alt="Foto 6">
-                <img src="assets/7.webp" alt="Foto 7">
-                <img src="assets/8.webp" alt="Foto 8">
-                <img src="assets/9.webp" alt="Foto 9">
+                <img src="assets/1.webp" alt="Foto 1"><img src="assets/2.webp" alt="Foto 2"><img src="assets/3.webp" alt="Foto 3">
+                <img src="assets/4.webp" alt="Foto 4"><img src="assets/5.webp" alt="Foto 5"><img src="assets/6.webp" alt="Foto 6">
+                <img src="assets/7.webp" alt="Foto 7"><img src="assets/8.webp" alt="Foto 8"><img src="assets/9.webp" alt="Foto 9">
                 <img src="assets/10.webp" alt="Foto 10">
             </div>
         </div>
@@ -225,7 +204,6 @@
                 <div class="about-content">
                     <h3>Minha Trajetória</h3>
                     <p>Aos 40 anos, encontro meu alicerce na família! Sou casado com Karin Mayumi e agraciado pela vida dos nossos 3 filhos: Jhonatan, Gabriel e Valenthina. Há duas décadas, dedico-me ao cuidado emocional e espiritual como pastor sênior na Estrela de Davi Church, em São Paulo. Transformo essa dádiva que me foi vocacionada em missão: auxiliar pessoas a alcançarem o equilíbrio entre corpo, alma e espírito. Vivo para que cada indivíduo acesse a vida abundante e o propósito que Deus reservou para eles!</p>
-                    
                     <h3 style="margin-top: 30px;">Meus Fundamentos</h3>
                     <ul class="formations-list">
                         <li>Psicanalista Clínico pelo Instituto FD</li>
@@ -244,29 +222,17 @@
             <h3 style="text-align: center; font-size: 28px;">Posso te Servir?</h3>
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
-                    <div class="service-photo-box">
-                        <div class="service-img-placeholder">
-                            <img src="assets/palestra.webp" alt="Palestra">
-                        </div>
-                    </div>
+                    <div class="service-photo-box"><div class="service-img-placeholder"><img src="assets/palestra.webp" alt="Palestra"></div></div>
                     <h4>Palestras e Conferências</h4>
-                    <p>Capacitando indivíduos a reconstruírem sua essência e clareza de propósito. Unindo a fé e o autoconhecimento, promovo uma transformação que reverbera em todas as esferas da vida.</p>
+                    <p>Capacitando indivíduos a reconstruírem sua essência e clareza de propósito. Unindo a fé e o autoconhecimento, promovo uma transformação que reverbera em todas as esferas.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <div class="service-photo-box">
-                        <div class="service-img-placeholder">
-                            <img src="assets/terapia.webp" alt="Terapia">
-                        </div>
-                    </div>
+                    <div class="service-photo-box"><div class="service-img-placeholder"><img src="assets/terapia.webp" alt="Terapia"></div></div>
                     <h4>Terapias e Mentorias</h4>
                     <p>Suporte contra traumas através da Psicanálise, PNL e mentorias de Life Coach. Guio empresários à uma liderança consciente, que se inicia com a restauração mental e emocional.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <div class="service-photo-box">
-                        <div class="service-img-placeholder">
-                            <img src="assets/pregacao.webp" alt="Pregação">
-                        </div>
-                    </div>
+                    <div class="service-photo-box"><div class="service-img-placeholder"><img src="assets/pregacao.webp" alt="Pregação"></div></div>
                     <h4>Pregações da Palavra</h4>
                     <p>À serviço do Reino, semeio as Escrituras por todo o Brasil. Levo a esperança do Evangelho a todos que buscam um encontro real com Deus, seguindo Sua ordenança de "Ide por todo mundo e pregai a toda criatura."</p>
                 </div>
@@ -282,13 +248,13 @@
             <h3>Sessões Online e Presenciais</h3>
             <div class="location-info">
                 <i class="fas fa-location-dot"></i>
-                <span>Rua Flor Boreal, 87 - Itaim Paulista, SP</span>
+                <span>R. Flor Boreal, 87 - Jardim dos Ipês<br>Itaim Paulista, SP - CEP 08161-030</span>
             </div>
             <div class="reels-container">
                 <iframe src="https://www.instagram.com/p/DWwucMRj9Jq/embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
             </div>
             <a href="https://share.google/FNgFHaiADrNn1f3Mi" target="_blank" class="btn-maps animate-on-scroll">
-                <i class="fas fa-location-dot"></i>
+                <img src="assets/maps-icon.png" alt="Google Maps">
                 avalie nosso consultório psicanalítico no google maps!
             </a>
         </div>
@@ -307,7 +273,7 @@
                     <div class="faq-answer"><p>Claro que não! Meu propósito de vida é ajudar pessoas, então tenho ofertado minha ajuda a um preço acessível.</p></div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Eu nunca fiz. E se eu não gostar? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question">Nunca fiz. E se eu não gostar? <i class="fas fa-chevron-down"></i></div>
                     <div class="faq-answer"><p>Faremos a primeira sessão gratuita, onde será tirada todas as dúvidas e explicado todo o processo terapêutico.</p></div>
                 </div>
             </div>
@@ -331,6 +297,7 @@
     </a>
 
     <script>
+        // Lógica do FAQ
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 const answer = item.nextElementSibling;
@@ -345,7 +312,7 @@
             });
         });
 
-        const floatingWa = document.querySelector('.floating-wa');
+        // Animações de Scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -354,10 +321,12 @@
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
+        // Lógica do Botão Flutuante WA (Aparece após o topo e permanece)
+        const floatingWa = document.querySelector('.floating-wa');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 200) {
                 floatingWa.classList.add('show');
-            } else {
+            } else if (window.scrollY <= 50) {
                 floatingWa.classList.remove('show');
             }
         });
