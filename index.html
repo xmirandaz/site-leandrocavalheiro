@@ -48,6 +48,27 @@
         }
         .btn-cta:hover { transform: scale(1.03); }
 
+        /* Estilo Novo do Botão Google Maps */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            color: var(--accent-color) !important;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(183, 124, 90, 0.2);
+            margin-top: 25px;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 100%;
+        }
+        .btn-maps i { margin-right: 12px; font-size: 20px; color: #4285F4; } /* Cor oficial do G da Google */
+        .btn-maps:hover { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+
         /* Alternância de Cores de Fundo */
         .hero { background: #ffffff; padding: 30px 0; text-align: center; }
         .about-section { background: var(--bg-alt); padding: 40px 0; }
@@ -154,6 +175,7 @@
                 0% { transform: translateX(0); }
                 100% { transform: translateX(calc(-180px * 10 - 200px)); }
             }
+            .btn-maps { font-size: 12px; padding: 12px 15px; }
         }
     </style>
 </head>
@@ -264,7 +286,7 @@
 
     <section class="sessions-section animate-on-scroll">
         <div class="container">
-            <h3>Sessões Online e Presenciais<br>Nosso Consultório Psicanalítico:</h3>
+            <h3>Sessões Online e Presenciais</h3>
             <div class="reels-container">
                 <iframe src="https://www.instagram.com/p/DWwucMRj9Jq/embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
             </div>
@@ -272,6 +294,10 @@
                 <i class="fas fa-location-dot"></i>
                 <span>Rua Flor Boreal, 87 - Itaim Paulista, SP</span>
             </div>
+            <a href="https://share.google/FNgFHaiADrNn1f3Mi" target="_blank" class="btn-maps animate-on-scroll">
+                <i class="fab fa-google"></i>
+                Confira e Avalie Nosso Consultório Psicanalítico no Google Maps
+            </a>
         </div>
     </section>
 
