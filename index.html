@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leandro Cavalheiro - V6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --bg-alt: #f5efeb; 
+            --accent-color: #b77c5a;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --whatsapp-green: #25D366;
+            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        h1, h2, h3, h4, .faq-question, .btn-cta { 
+            font-weight: 700;
+            color: var(--accent-color) !important;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white !important;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(183, 124, 90, 0.3);
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .btn-cta:hover { transform: scale(1.03); }
+
+        /* Alternância de Cores de Fundo */
+        .hero { background: #ffffff; padding: 30px 0; text-align: center; }
+        .about-section { background: var(--bg-alt); padding: 40px 0; }
+        .services-section { background: #ffffff; padding: 40px 0; }
+        .sessions-section { background: var(--bg-alt); padding: 40px 0; text-align: center; }
+        .faq-section { background: #ffffff; padding: 40px 0; }
+        footer { background: var(--bg-alt); padding: 40px 0 20px 0; text-align: center; border-top: 1px solid #eee; }
+
+        /* Hero */
+        .hero-photo-main {
+            width: 320px; height: 320px; border-radius: 50%;
+            margin: 0 auto 20px auto; position: relative; padding: 6px;
+            background: var(--insta-gradient); display: flex; align-items: center; justify-content: center;
+        }
+        .hero-photo-main img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 5px solid white; }
+
+        .logo-area { margin-bottom: 20px; }
+        .logo-area img { max-width: 500px; height: auto; }
+
+        .social-phrase { font-size: 16px; color: var(--text-dark); margin: 20px 0 30px 0; }
+        .social-minimalist { display: flex; justify-content: center; gap: 35px; margin: 10px 0 40px 0; }
+        .social-link i { color: var(--accent-color); font-size: 40px; transition: transform 0.3s, opacity 0.3s; }
+        .social-link:hover i { opacity: 0.7; transform: translateY(-3px); }
+
+        /* CARROSSEL SOBRE MIM */
+        .carousel-about {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0 40px 0;
+            position: relative;
+            pointer-events: none;
+            user-select: none;
+        }
+        .carousel-track {
+            display: flex;
+            width: calc(250px * 20); 
+            animation: scroll-left 40s linear infinite;
+        }
+        .carousel-track img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 10px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 10 - 200px)); }
+        }
+        
+        .about-content { text-align: center; max-width: 800px; margin: 0 auto; }
+
+        /* Serviços */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; margin-top: 80px; }
+        .service-card { background: white; padding: 65px 25px 35px 25px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); position: relative; text-align: center; }
+        .service-photo-box { width: 130px; height: 130px; position: absolute; top: -65px; left: 50%; transform: translateX(-50%); border-radius: 50%; padding: 4px; background: var(--insta-gradient); display: flex; align-items: center; justify-content: center; }
+        .service-img-placeholder { width: 100%; height: 100%; background: white; border-radius: 50%; overflow: hidden; border: 3px solid white; }
+        .service-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Sessões e Reels */
+        .reels-container { width: 100%; max-width: 350px; aspect-ratio: 9 / 16; background-color: #eee; margin: 30px auto; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; overflow: hidden; }
+        .reels-container iframe { width: 100%; height: 100%; border: none; }
+        .location-info { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; color: var(--text-dark); margin-top: 20px; }
+        .location-info i { color: var(--accent-color); font-size: 20px; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid #eee; margin-bottom: 10px; background: white; border-radius: 8px; }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s; padding: 0 20px; color: var(--text-light); }
+        .faq-answer p { padding-bottom: 15px; }
+
+        /* Footer */
+        .footer-logo img { max-width: 400px; height: auto; margin-bottom: 20px; }
+        .footer-copy { margin-top: 30px; font-size: 13px; color: var(--text-light); }
+
+        .floating-wa {
+            position: fixed; bottom: 20px; right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s;
+        }
+        .floating-wa.show { opacity: 1; visibility: visible; }
+        .floating-wa:hover { transform: scale(1.1); }
+
+        .formations-list { list-style: none; margin-top: 20px; display: inline-block; text-align: left; }
+        .formations-list li { margin-bottom: 8px; position: relative; padding-left: 20px; font-size: 15px; color: var(--text-light); }
+        .formations-list li::before { content: "•"; color: var(--accent-color); font-weight: bold; position: absolute; left: 0; }
+
+        @media (max-width: 768px) {
+            .logo-area img { max-width: 280px; }
+            .hero-photo-main { width: 250px; height: 250px; }
+            .services-grid { gap: 60px; }
+            .footer-logo img { max-width: 250px; }
+            .floating-wa { width: 55px; height: 55px; font-size: 25px; right: 15px; bottom: 15px; }
+            h3 { font-size: 20px; }
+            .carousel-track img { width: 180px; height: 180px; }
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-180px * 10 - 200px)); }
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container animate-on-scroll">
+            <div class="hero-photo-main">
+                <img src="assets/perfil.webp" alt="Leandro Cavalheiro">
+            </div>
+            <div class="logo-area">
+                <img src="assets/logo.webp" alt="Logo Leandro Cavalheiro">
+            </div>
+            <p class="social-phrase">
+                Onde a ciência da mente encontra o cuidado da alma! <strong>Continue essa jornada comigo nas redes sociais:</strong>
+            </p>
+            <div class="social-minimalist">
+                <a href="https://instagram.com/leandrocavalheiro.psi" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/PrLeandroCavalheiro" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/5511999412912?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <a href="https://wa.me/5511999412912?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." class="btn-cta">AGENDE UMA SESSÃO GRATUITA!</a>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="carousel-about">
+            <div class="carousel-track">
+                <img src="assets/1.webp" alt="Foto 1">
+                <img src="assets/2.webp" alt="Foto 2">
+                <img src="assets/3.webp" alt="Foto 3">
+                <img src="assets/4.webp" alt="Foto 4">
+                <img src="assets/5.webp" alt="Foto 5">
+                <img src="assets/6.webp" alt="Foto 6">
+                <img src="assets/7.webp" alt="Foto 7">
+                <img src="assets/8.webp" alt="Foto 8">
+                <img src="assets/9.webp" alt="Foto 9">
+                <img src="assets/10.webp" alt="Foto 10">
+                <img src="assets/1.webp" alt="Foto 1">
+                <img src="assets/2.webp" alt="Foto 2">
+                <img src="assets/3.webp" alt="Foto 3">
+                <img src="assets/4.webp" alt="Foto 4">
+                <img src="assets/5.webp" alt="Foto 5">
+                <img src="assets/6.webp" alt="Foto 6">
+                <img src="assets/7.webp" alt="Foto 7">
+                <img src="assets/8.webp" alt="Foto 8">
+                <img src="assets/9.webp" alt="Foto 9">
+                <img src="assets/10.webp" alt="Foto 10">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="animate-on-scroll">
+                <div class="about-content">
+                    <h3>Minha Trajetória</h3>
+                    <p>Aos 40 anos, encontro meu alicerce na família! Sou casado com Karin Mayumi e agraciado pela vida dos nossos 3 filhos: Jhonatan, Gabriel e Valenthina. Há duas décadas, dedico-me ao cuidado emocional e espiritual como pastor sênior na Estrela de Davi Church, em São Paulo. Transformo essa dádiva que me foi vocacionada em missão: auxiliar pessoas a alcançarem o equilíbrio entre corpo, alma e espírito. Vivo para que cada indivíduo acesse a vida abundante e o propósito que Deus reservou para eles!</p>
+                    
+                    <h3 style="margin-top: 30px;">Meus Fundamentos</h3>
+                    <ul class="formations-list">
+                        <li>Psicanalista Clínico pelo Instituto FD</li>
+                        <li>Teólogo pela EETAD</li>
+                        <li>Formado em Life Coach</li>
+                        <li>Formado em PNL Practioner</li>
+                        <li>Graduando Psicologia na UNICSUL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h3 style="text-align: center; font-size: 28px;">Posso te Servir?</h3>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-photo-box">
+                        <div class="service-img-placeholder">
+                            <img src="assets/palestra.webp" alt="Palestra">
+                        </div>
+                    </div>
+                    <h4>Palestras e Conferências</h4>
+                    <p>Capacitando indivíduos a reconstruírem sua essência e clareza de propósito. Unindo a fé e o autoconhecimento, promovo uma transformação que reverbera em todas as esferas da vida.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-photo-box">
+                        <div class="service-img-placeholder">
+                            <img src="assets/terapia.webp" alt="Terapia">
+                        </div>
+                    </div>
+                    <h4>Terapias e Mentorias</h4>
+                    <p>Suporte contra traumas através da Psicanálise, PNL e mentorias de Life Coach. Guio empresários à uma liderança consciente, que se inicia com a restauração mental e emocional.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-photo-box">
+                        <div class="service-img-placeholder">
+                            <img src="assets/pregacao.webp" alt="Pregação">
+                        </div>
+                    </div>
+                    <h4>Pregações da Palavra</h4>
+                    <p>À serviço do Reino, semeio as Escrituras por todo o Brasil. Levo a esperança do Evangelho a todos que buscam um encontro real com Deus, seguindo Sua ordenança de "Ide por todo mundo e pregai a toda criatura."</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://wa.me/5511999412912?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." class="btn-cta">SABER MAIS SOBRE OS SERVIÇOS</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="sessions-section animate-on-scroll">
+        <div class="container">
+            <h3>Sessões Online e Presenciais<br>Nosso Consultório Psicanalítico:</h3>
+            <div class="reels-container">
+                <iframe src="https://www.instagram.com/p/DWwucMRj9Jq/embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div class="location-info">
+                <i class="fas fa-location-dot"></i>
+                <span>Rua Flor Boreal, 87 - Itaim Paulista, SP</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: 30px;">Acabe com as Dúvidas!</h3>
+            <div class="animate-on-scroll">
+                <div class="faq-item">
+                    <div class="faq-question">Será que eu preciso de terapia? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Com certeza! A terapia é para todos que desejam ser pessoas melhores para si mesmo e para os outros.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Suas sessões são muito caras? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Claro que não! Meu propósito de vida é ajudar pessoas, então tenho ofertado minha ajuda a um preço acessível.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Eu nunca fiz. E se eu não gostar? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Faremos a primeira sessão gratuita, onde será tirada todas as dúvidas e explicado todo o processo terapêutico.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container animate-on-scroll">
+            <div class="footer-logo">
+                <img src="assets/logo.webp" alt="Logo Leandro Cavalheiro">
+            </div>
+            <a href="https://wa.me/5511999412912?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." class="btn-cta">AGENDE UMA SESSÃO GRATUITA!</a>
+            <div class="footer-copy">
+                2026 &copy; Leandro Cavalheiro.<br>Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999412912?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços." class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('i');
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.style.transform = "rotate(0deg)";
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.style.transform = "rotate(180deg)";
+                }
+            });
+        });
+
+        const floatingWa = document.querySelector('.floating-wa');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                floatingWa.classList.add('show');
+            } else {
+                floatingWa.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
