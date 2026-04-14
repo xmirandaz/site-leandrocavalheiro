@@ -64,7 +64,7 @@
             font-weight: 700;
             transition: transform 0.3s, box-shadow 0.3s;
             border: none;
-            margin-top: 10px;
+            margin-top: 25px;
             font-size: 14px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-transform: uppercase;
@@ -73,7 +73,7 @@
         .btn-maps img { width: 50px; height: 50px; margin-right: 15px; }
         .btn-maps:hover { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0,149,246,0.3); }
 
-        /* Seção Maps (Título e Ícone Azuis) */
+        /* Estilo da Seção Maps (Título e Ícone Azuis) */
         .sessions-section h3 { color: var(--maps-blue) !important; margin-bottom: 20px; }
         .location-info i { color: var(--maps-blue) !important; font-size: 20px; }
 
@@ -100,10 +100,24 @@
         .social-link i { color: var(--accent-color); font-size: 40px; transition: transform 0.3s, opacity 0.3s; }
         .social-link:hover i { opacity: 0.7; transform: translateY(-3px); }
 
-        /* Carrosséis Estilo Instagram */
-        .carousel-about, .carousel-reviews { width: 100%; overflow: hidden; padding: 20px 0 40px 0; position: relative; pointer-events: none; }
-        .carousel-track { display: flex; width: max-content; animation: scroll-left 45s linear infinite; }
-        
+        /* Carrossel ATUALIZADO para Ponta a Ponta */
+        .carousel-about { 
+            width: 100vw; /* Força a largura total da janela */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden; 
+            padding: 20px 0 40px 0; 
+            pointer-events: none; 
+            user-select: none;
+        }
+        .carousel-track { 
+            display: flex; 
+            width: calc(250px * 20); 
+            animation: scroll-left 40s linear infinite; 
+        }
         .carousel-track img { 
             width: 250px; 
             height: 250px; 
@@ -116,7 +130,7 @@
         
         @keyframes scroll-left {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(calc(-250px * 10 - 200px)); }
         }
 
         .about-content { text-align: center; max-width: 800px; margin: 0 auto; }
@@ -163,6 +177,11 @@
             .hero-photo-main { width: 250px; height: 250px; }
             .footer-logo img { max-width: 220px; }
             .carousel-track img { width: 180px; height: 180px; }
+            .carousel-about { width: 100vw; margin-left: -50vw; left: 50%; }
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-180px * 10 - 200px)); }
+            }
         }
     </style>
 </head>
@@ -188,7 +207,7 @@
         </div>
     </section>
 
-    <section class="about-section">
+    <section class="about-section" id="about">
         <div class="carousel-about">
             <div class="carousel-track">
                 <img src="assets/1.webp" alt="1"><img src="assets/2.webp" alt="2"><img src="assets/3.webp" alt="3">
@@ -248,26 +267,11 @@
                 <i class="fas fa-location-dot"></i>
                 <span>R. Flor Boreal, 87 - Jardim dos Ipês<br>Itaim Paulista, SP - CEP 08161-030</span>
             </div>
-            
             <div class="reels-container">
                 <iframe src="https://www.instagram.com/p/DWwucMRj9Jq/embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
             </div>
-
-            <div class="carousel-reviews">
-                <div class="carousel-track">
-                    <img src="assets/r1.webp" alt="R1"><img src="assets/r2.webp" alt="R2"><img src="assets/r3.webp" alt="R3">
-                    <img src="assets/r4.webp" alt="R4"><img src="assets/r5.webp" alt="R5"><img src="assets/r6.webp" alt="R6">
-                    <img src="assets/r7.webp" alt="R7"><img src="assets/r8.webp" alt="R8"><img src="assets/r9.webp" alt="R9">
-                    <img src="assets/r10.webp" alt="R10"><img src="assets/r11.webp" alt="R11">
-                    <img src="assets/r1.webp" alt="R1"><img src="assets/r2.webp" alt="R2"><img src="assets/r3.webp" alt="R3">
-                    <img src="assets/r4.webp" alt="R4"><img src="assets/r5.webp" alt="R5"><img src="assets/r6.webp" alt="R6">
-                    <img src="assets/r7.webp" alt="R7"><img src="assets/r8.webp" alt="R8"><img src="assets/r9.webp" alt="R9">
-                    <img src="assets/r10.webp" alt="R10"><img src="assets/r11.webp" alt="R11">
-                </div>
-            </div>
-
             <a href="https://share.google/FNgFHaiADrNn1f3Mi" target="_blank" class="btn-maps">
-                <img src="assets/maps.webp" alt="Google Maps Logo">
+                <img src="assets/maps.webp" alt="Google Maps">
                 AVALIE O CONSULTÓRIO<br>NO GOOGLE MAPS!
             </a>
         </div>
