@@ -20,7 +20,6 @@
             --insta-gradient: linear-gradient(45deg, #f99b4a 0%, #dd2a7b 50%, #8122b0 100%);
         }
 
-        /* Montserrat global */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
@@ -34,7 +33,7 @@
         .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
-        /* Botões CTA */
+        /* Botão CTA Principal */
         .btn-cta {
             display: inline-block;
             background-color: var(--accent-color);
@@ -74,11 +73,11 @@
         .btn-maps img { width: 50px; height: 50px; margin-right: 15px; }
         .btn-maps:hover { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0,149,246,0.3); }
 
-        /* Seção Localização */
+        /* Estilo da Seção Maps (Título e Ícone Azuis) */
         .sessions-section h3 { color: var(--maps-blue) !important; margin-bottom: 20px; }
         .location-info i { color: var(--maps-blue) !important; font-size: 20px; }
 
-        /* Alternância de Cores */
+        /* Fundos Alternados */
         .hero { background: #ffffff; padding: 30px 0; text-align: center; }
         .about-section { background: var(--bg-alt); padding: 40px 0; }
         .services-section { background: #ffffff; padding: 40px 0; }
@@ -101,39 +100,19 @@
         .social-link i { color: var(--accent-color); font-size: 40px; transition: transform 0.3s, opacity 0.3s; }
         .social-link:hover i { opacity: 0.7; transform: translateY(-3px); }
 
-        /* CARROSSEL INFINITO (R1 a R11) */
-        .carousel-about { 
-            width: 100%; 
-            overflow: hidden; 
-            padding: 20px 0 40px 0; 
-            margin: 0;
-            pointer-events: none; 
-            user-select: none;
-            display: flex;
-        }
-        .carousel-track { 
-            display: flex; 
-            width: max-content; 
-            animation: scroll-left 40s linear infinite; 
-        }
-        .carousel-track img { 
-            width: 250px; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 15px; 
-            margin: 0 10px; 
-            flex-shrink: 0; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-        }
+        /* Carrossel */
+        .carousel-about { width: 100%; overflow: hidden; padding: 20px 0 40px 0; position: relative; pointer-events: none; }
+        .carousel-track { display: flex; width: calc(250px * 20); animation: scroll-left 40s linear infinite; }
+        .carousel-track img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; margin: 0 10px; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
         @keyframes scroll-left {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(calc(-250px * 10 - 200px)); }
         }
 
         .about-content { text-align: center; max-width: 800px; margin: 0 auto; }
         
-        /* Serviços */
+        /* Cards Serviços */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; margin-top: 80px; }
         .service-card { background: white; padding: 65px 25px 35px 25px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); position: relative; text-align: center; }
         .service-photo-box { width: 130px; height: 130px; position: absolute; top: -65px; left: 50%; transform: translateX(-50%); border-radius: 50%; padding: 4px; background: var(--insta-gradient); display: flex; align-items: center; justify-content: center; }
@@ -175,10 +154,6 @@
             .hero-photo-main { width: 250px; height: 250px; }
             .footer-logo img { max-width: 220px; }
             .carousel-track img { width: 180px; height: 180px; }
-            @keyframes scroll-left {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
         }
     </style>
 </head>
@@ -204,17 +179,15 @@
         </div>
     </section>
 
-    <section class="about-section" id="about">
+    <section class="about-section">
         <div class="carousel-about">
             <div class="carousel-track">
-                <img src="assets/r1.webp" alt="1"><img src="assets/r2.webp" alt="2"><img src="assets/r3.webp" alt="3">
-                <img src="assets/r4.webp" alt="4"><img src="assets/r5.webp" alt="5"><img src="assets/r6.webp" alt="6">
-                <img src="assets/r7.webp" alt="7"><img src="assets/r8.webp" alt="8"><img src="assets/r9.webp" alt="9">
-                <img src="assets/r10.webp" alt="10"><img src="assets/r11.webp" alt="11">
-                <img src="assets/r1.webp" alt="1"><img src="assets/r2.webp" alt="2"><img src="assets/r3.webp" alt="3">
-                <img src="assets/r4.webp" alt="4"><img src="assets/r5.webp" alt="5"><img src="assets/r6.webp" alt="6">
-                <img src="assets/r7.webp" alt="7"><img src="assets/r8.webp" alt="8"><img src="assets/r9.webp" alt="9">
-                <img src="assets/r10.webp" alt="10"><img src="assets/r11.webp" alt="11">
+                <img src="assets/1.webp" alt="1"><img src="assets/2.webp" alt="2"><img src="assets/3.webp" alt="3">
+                <img src="assets/4.webp" alt="4"><img src="assets/5.webp" alt="5"><img src="assets/6.webp" alt="6">
+                <img src="assets/7.webp" alt="7"><img src="assets/8.webp" alt="8"><img src="assets/9.webp" alt="9"><img src="assets/10.webp" alt="10">
+                <img src="assets/1.webp" alt="1"><img src="assets/2.webp" alt="2"><img src="assets/3.webp" alt="3">
+                <img src="assets/4.webp" alt="4"><img src="assets/5.webp" alt="5"><img src="assets/6.webp" alt="6">
+                <img src="assets/7.webp" alt="7"><img src="assets/8.webp" alt="8"><img src="assets/9.webp" alt="9"><img src="assets/10.webp" alt="10">
             </div>
         </div>
         <div class="container animate-on-scroll">
